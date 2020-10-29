@@ -4,36 +4,13 @@ from requests_html import HTMLSession
 # Init http session
 session = HTMLSession()
 
-### GEWOBA
-# Get request for GEWOBA
-URL = 'https://www.gewoba.de/mieten-verwalten-kaufen-verkaufen/wohnung-mieten'
-page = session.get(URL)
+### IMMOBILIENSCOUT24
+# URL consists of base, location selector and search query
+BASE_URL = 'https://www.immobilienscout24.de/Suche'
+LOCATION_QUERY = '/de/bremen/bremen/wohnung-mieten'
+SEARCH_QUERY = '?numberofrooms=2.0-&price=-550.0&livingspace=40.0-&enteredFrom=one_step_search'
 
-# Render JavaScript to show filter options
-page.html.render()
+# GET request
+page = session.get(BASE_URL+LOCATION_QUERY+SEARCH_QUERY)
 
-
-# Select filter options
-options = [page.html.find('.options-basic'), page.html.find('.options-ranges')]
-
-
-# Find relevant search filter nodes
-filters = []
-interests = {'city': {'id': 'ort', 'value': 'Bremen'},
-             'district': {'id': 'stadtteil', 'value': ''},
-             'rent': {'id': 'gesamt_miete', 'value': ''},
-             'rooms': {'id': '_raeume_gesamt', 'value': ''}}
-for interest in interests:
-    for option in options:
-        filters.append(options[option].find(f"#{interests[interest]['id']}"))
-
-print(filters[0])
-
-city = page.html.find(f'#{interests[0]}', first=True)
-print(city)
-"""
-district = page.html.find('#stadtteil', first=True)
-rent = page.html.find()
-
-bremen = city.find('option[value=Bremen]')
-"""
+print(page.content)
