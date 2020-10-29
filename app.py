@@ -1,7 +1,10 @@
 from requests_html import HTMLSession
 
+
 # Init http session
 session = HTMLSession()
+
+### GEWOBA
 # Get request for GEWOBA
 URL = 'https://www.gewoba.de/mieten-verwalten-kaufen-verkaufen/wohnung-mieten'
 page = session.get(URL)
