@@ -10,7 +10,8 @@
 
 ## [ImmoScout24](https://www.immobilienscout24.de/wohnen/mietwohnungen.html)
 
-- The most important search filters can be made over the url	`/Suche/de/bremen/bremen/wohnung-mieten?numberofrooms=2.0-&price=-550.0&livingspace=40.0-&enteredFrom=one_step_search`
+- The most important search filters can be made over the url
+	`/Suche/de/bremen/bremen/wohnung-mieten?numberofrooms=2.0-&price=-550.0&livingspace=40.0-&enteredFrom=one_step_search`
 
 - Requesting the site via formatted url returns captcha check
 
